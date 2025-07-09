@@ -3,7 +3,7 @@ from pages.product_page import ShellCodersPage
 
 @pytest.fixture(scope="function")
 def product_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
     page = ShellCodersPage(browser, link)
     page.open()
     return page
