@@ -5,7 +5,7 @@ This is plan for this project:
 Task: Add to cart from product page ✅
 Task: Data independence ✅
 Task: Content independence, looking for a bug ✅
-Negative checks: how to check for missing element
+Negative checks: how to check for missing element ✅
 Task: Negative checks
 Pros of inheritance: OOP magic
 Pros of inheritance: example
