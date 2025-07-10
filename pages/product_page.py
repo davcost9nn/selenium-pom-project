@@ -1,7 +1,6 @@
-from typing import assert_type
+
 
 from .base_page import BasePage
-from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 
 
@@ -27,3 +26,15 @@ class ShellCodersPage(BasePage):
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_FORM).text
         assert name_on_page == success_message, \
             f"Names are different: {name_on_page} (page) vs {success_message} (basket)"
+
+
+# Negative tests
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_FORM), \
+           "Success message is presented, but should not be"
+
+
+    def should_not_disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_FORM), \
+            "Success message not disappeared, but should be"
+
