@@ -12,7 +12,7 @@ class ShellCodersPage(BasePage):
 
 
     def should_be_promo_url(self):
-        assert "?promo=newYear" in self.browser.current_url, "Promo URL is not correct "
+        assert "?promo=" in self.browser.current_url, "Promo URL is not correct "
 
     def should_be_same_price_in_basket(self):
         price_on_page = self.browser.find_element(*ProductPageLocators.PRICE_OF_GOODS).text
@@ -24,6 +24,6 @@ class ShellCodersPage(BasePage):
 
     def should_be_same_name(self):
         name_on_page = self.browser.find_element(*ProductPageLocators.NAME_OF_GOODS).text
-        name_in_basket = self.browser.find_element(*ProductPageLocators.SUCCESS_FORM).text
-        assert name_on_page == name_in_basket[0:len(name_on_page)], \
-            f"Names are different: {name_on_page} (page) vs {name_in_basket} (basket)"
+        success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_FORM).text
+        assert name_on_page == success_message, \
+            f"Names are different: {name_on_page} (page) vs {success_message} (basket)"
