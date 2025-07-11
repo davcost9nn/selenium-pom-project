@@ -9,7 +9,6 @@ class ShellCodersPage(BasePage):
         link = self.browser.find_element(*ProductPageLocators.ADD_T0_BASKET)
         link.click()
 
-
     def should_be_promo_url(self):
         assert "?promo=" in self.browser.current_url, "Promo URL is not correct "
 

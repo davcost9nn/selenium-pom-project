@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
 
 
-class BasePage():
+class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
@@ -17,6 +17,9 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
+    def go_to_basket(self):
+        link = self.browser.find_element(*BasePageLocators.BASKET)
+        link.click()
 
     def is_disappeared(self, how, what, timeout=4):
         try:
@@ -50,7 +53,6 @@ class BasePage():
 
     def open(self):
         self.browser.get(self.url)
-
 
 
 

@@ -1,5 +1,6 @@
 import pytest
 from pages.product_page import ShellCodersPage
+from pages.basket_page import BasketPage
 import time
 
 @pytest.mark.positive
@@ -94,3 +95,20 @@ class TestAnyPageLogin:
     def test_guest_can_go_to_login_page_from_product_page (self):
         self.page.go_to_login_page()
         self.page.should_be_same_address('https://selenium1py.pythonanywhere.com/ru/accounts/login/')
+
+@pytest.mark.positive
+class TestBasket:
+
+    def test_guest_cant_see_product_in_basket_opened_from_main_page(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/"
+        self.page = BasketPage(browser, link)
+        self.page.open()
+        self.page.go_to_basket()
+        self.page.should_be_empty_basket()
+
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+        self.page = BasketPage(browser, link)
+        self.page.open()
+        self.page.go_to_basket()
+        self.page.should_be_empty_basket()
