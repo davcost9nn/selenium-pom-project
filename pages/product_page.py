@@ -2,7 +2,7 @@
 
 from .base_page import BasePage
 from .locators import ProductPageLocators
-
+from .locators import BasePageLocators
 
 class ShellCodersPage(BasePage):
     def add_to_basket(self):
@@ -26,6 +26,12 @@ class ShellCodersPage(BasePage):
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_FORM).text
         assert name_on_page == success_message, \
             f"Names are different: {name_on_page} (page) vs {success_message} (basket)"
+
+    def should_be_same_address(self,link):
+        assert self.is_same_address(link) , f"This is not {link}"
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
 
 # Negative tests

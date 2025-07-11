@@ -2,7 +2,7 @@ import pytest
 from pages.product_page import ShellCodersPage
 import time
 
-@pytest.mark.negative
+@pytest.mark.positive
 class TestProductPagePositive:
     """Тесты для проверки основной функциональности страницы продукта"""
 
@@ -30,7 +30,7 @@ class TestProductPagePositive:
         self.page.solve_quiz_and_get_code()
         self.page.should_be_same_name()
 
-@pytest.mark.negative
+@pytest.mark.positive
 class TestProductPageWithOffers:
     """Тесты для проверки различных промо-предложений"""
 
@@ -78,3 +78,19 @@ class TestProductPageNegative:
     def test_message_disappeared_after_adding_product_to_basket(self):
         self.page.add_to_basket()
         self.page.should_not_disappeared_after_adding_product_to_basket()
+
+@pytest.mark.positive
+class TestAnyPageLogin:
+
+    @pytest.fixture(scope='function', autouse=True)
+    def setup(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+        self.page = ShellCodersPage(browser, link)
+        self.page.open()
+
+    def test_guest_should_see_login_link_on_product_page(self):
+        self.page.should_be_login_link()
+
+    def test_guest_can_go_to_login_page_from_product_page (self):
+        self.page.go_to_login_page()
+        self.page.should_be_same_address('https://selenium1py.pythonanywhere.com/ru/accounts/login/')
