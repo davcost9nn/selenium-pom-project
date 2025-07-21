@@ -13,3 +13,16 @@ class BasePageLocators:
     BASKET = (By.CSS_SELECTOR,".btn-group a")
     BASKET_INFO = (By.CSS_SELECTOR, ".content_inner p")
     BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+
+class LoginPageLocators:
+    LOGIN_EMAIL_INPUT = (By.CSS_SELECTOR, "[type='email']")
+    LOGIN_PASSWORD_INPUT = (By.CSS_SELECTOR, "[type='password']")
+    REGISTER_EMAIL_INPUT = (By.CSS_SELECTOR,'[name="registration-email"]')
+    REGISTER_PASSWORD_INPUT = (By.CSS_SELECTOR, '[name="registration-password1"]')
+    REGISTER_PASSWORD_AGAIN_INPUT = (By.CSS_SELECTOR, '[name="registration-password2"]')
+    REGISTER_BUTTON = (By.CSS_SELECTOR,'[name="registration_submit"]')
+    LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
+    REGISTER_FORM = (By.CSS_SELECTOR, '#register_form')
+
+
