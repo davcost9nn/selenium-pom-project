@@ -4,19 +4,15 @@ from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
     def register_new_user(self, email, password):
-        # Находим и заполняем email
         email_input = self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL_INPUT)
         email_input.send_keys(email)
 
-        # Находим и заполняем пароль
         password_input = self.browser.find_element(*LoginPageLocators.REGISTER_PASSWORD_INPUT)
         password_input.send_keys(password)
 
-        # Находим и заполняем подтверждение пароля (если есть)
         confirm_password = self.browser.find_element(*LoginPageLocators.REGISTER_PASSWORD_AGAIN_INPUT)
         confirm_password.send_keys(password)
 
-        # Нажимаем кнопку регистрации
         register_button = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON)
         register_button.click()
 
